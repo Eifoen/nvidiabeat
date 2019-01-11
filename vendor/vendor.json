@@ -1,0 +1,45 @@
+{
+	"comment": "",
+	"ignore": "",
+	"package": [
+		{
+			"checksumSHA1": "2tA0dEvukY87CZh+TH1YaJqQlWQ=",
+			"path": "github.com/Eifoen/gonvml",
+			"revision": "08c76bad319008dc4588ac0ec99f8ce7ccd0e109",
+			"revisionTime": "2019-01-21T10:10:22Z"
+		},
+		{
+			"checksumSHA1": "fHpo/9Tke6VFfZZAT+PRnoNOiiY=",
+			"path": "github.com/magefile/mage/internal",
+			"revision": "8c70a98ec40f608a3b4f837e707561348e1bdf36",
+			"revisionTime": "2018-12-31T15:22:54Z"
+		},
+		{
+			"checksumSHA1": "zf0FQ0Gz8qxZ3VzMmnkN4Ozqm0I=",
+			"path": "github.com/magefile/mage/mage",
+			"revision": "8c70a98ec40f608a3b4f837e707561348e1bdf36",
+			"revisionTime": "2018-12-31T15:22:54Z"
+		},
+		{
+			"checksumSHA1": "xHHnKHWkOuVZRmYLuclRvvboqJw=",
+			"origin": "github.com/Eifoen/nvidiabeat/vendor/github.com/magefile/mage/mg",
+			"path": "github.com/magefile/mage/mg",
+			"revision": "8c70a98ec40f608a3b4f837e707561348e1bdf36",
+			"revisionTime": "2018-12-31T15:22:54Z"
+		},
+		{
+			"checksumSHA1": "CPRdM+eNx6vyOqmyKuGH76xfBJc=",
+			"path": "github.com/magefile/mage/parse",
+			"revision": "8c70a98ec40f608a3b4f837e707561348e1bdf36",
+			"revisionTime": "2018-12-31T15:22:54Z"
+		},
+		{
+			"checksumSHA1": "R0e5YgbK03Bckq3atmWWF92JF7s=",
+			"origin": "github.com/Eifoen/nvidiabeat/vendor/github.com/magefile/mage/sh",
+			"path": "github.com/magefile/mage/sh",
+			"revision": "8c70a98ec40f608a3b4f837e707561348e1bdf36",
+			"revisionTime": "2018-12-31T15:22:54Z"
+		}
+	],
+	"rootPath": "github.com/Eifoen/nvidiabeat"
+}

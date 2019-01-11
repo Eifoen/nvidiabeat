@@ -1,0 +1,5 @@
+nvidiabeat
+Copyright 2019 Dominik Tervooren
+
+This product includes software developed by The Apache Software
+Foundation (http://www.apache.org/).

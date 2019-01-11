@@ -1,0 +1,977 @@
+
+////
+This file is generated! See _meta/fields.yml and scripts/generate_field_docs.py
+////
+
+[[exported-fields]]
+= Exported fields
+
+[partintro]
+
+--
+This document describes the fields that are exported by nvidiabeat. They are
+grouped in the following categories:
+
+* <<exported-fields-beat>>
+* <<exported-fields-cloud>>
+* <<exported-fields-docker-processor>>
+* <<exported-fields-host-processor>>
+* <<exported-fields-kubernetes-processor>>
+* <<exported-fields-nvidiabeat>>
+
+--
+[[exported-fields-beat]]
+== Beat fields
+
+Contains common beat fields available in all event types.
+
+
+
+*`beat.name`*::
++
+--
+The name of the Beat sending the log messages. If the Beat name is set in the configuration file, then that value is used. If it is not set, the hostname is used. To set the Beat name, use the `name` option in the configuration file.
+
+
+--
+
+*`beat.hostname`*::
++
+--
+The hostname as returned by the operating system on which the Beat is running.
+
+
+--
+
+*`beat.timezone`*::
++
+--
+The timezone as returned by the operating system on which the Beat is running.
+
+
+--
+
+*`beat.version`*::
++
+--
+The version of the beat that generated this event.
+
+
+--
+
+*`@timestamp`*::
++
+--
+type: date
+
+example: August 26th 2016, 12:35:53.332
+
+format: date
+
+required: True
+
+The timestamp when the event log record was generated.
+
+
+--
+
+*`tags`*::
++
+--
+Arbitrary tags that can be set per Beat and per transaction type.
+
+
+--
+
+*`fields`*::
++
+--
+type: object
+
+Contains user configurable fields.
+
+
+--
+
+[float]
+== error fields
+
+Error fields containing additional info in case of errors.
+
+
+
+*`error.message`*::
++
+--
+type: text
+
+Error message.
+
+
+--
+
+*`error.code`*::
++
+--
+type: long
+
+Error code.
+
+
+--
+
+*`error.type`*::
++
+--
+type: keyword
+
+Error type.
+
+
+--
+
+[[exported-fields-cloud]]
+== Cloud provider metadata fields
+
+Metadata from cloud providers added by the add_cloud_metadata processor.
+
+
+
+*`meta.cloud.provider`*::
++
+--
+example: ec2
+
+Name of the cloud provider. Possible values are ec2, gce, or digitalocean.
+
+
+--
+
+*`meta.cloud.instance_id`*::
++
+--
+Instance ID of the host machine.
+
+
+--
+
+*`meta.cloud.instance_name`*::
++
+--
+Instance name of the host machine.
+
+
+--
+
+*`meta.cloud.machine_type`*::
++
+--
+example: t2.medium
+
+Machine type of the host machine.
+
+
+--
+
+*`meta.cloud.availability_zone`*::
++
+--
+example: us-east-1c
+
+Availability zone in which this host is running.
+
+
+--
+
+*`meta.cloud.project_id`*::
++
+--
+example: project-x
+
+Name of the project in Google Cloud.
+
+
+--
+
+*`meta.cloud.region`*::
++
+--
+Region in which this host is running.
+
+
+--
+
+[[exported-fields-docker-processor]]
+== Docker fields
+
+Docker stats collected from Docker.
+
+
+
+
+*`docker.container.id`*::
++
+--
+type: keyword
+
+Unique container id.
+
+
+--
+
+*`docker.container.image`*::
++
+--
+type: keyword
+
+Name of the image the container was built on.
+
+
+--
+
+*`docker.container.name`*::
++
+--
+type: keyword
+
+Container name.
+
+
+--
+
+*`docker.container.labels`*::
++
+--
+type: object
+
+Image labels.
+
+
+--
+
+[[exported-fields-host-processor]]
+== Host fields
+
+Info collected for the host machine.
+
+
+
+
+*`host.name`*::
++
+--
+type: keyword
+
+Hostname.
+
+
+--
+
+*`host.id`*::
++
+--
+type: keyword
+
+Unique host id.
+
+
+--
+
+*`host.architecture`*::
++
+--
+type: keyword
+
+Host architecture (e.g. x86_64, arm, ppc, mips).
+
+
+--
+
+*`host.os.platform`*::
++
+--
+type: keyword
+
+OS platform (e.g. centos, ubuntu, windows).
+
+
+--
+
+*`host.os.version`*::
++
+--
+type: keyword
+
+OS version.
+
+
+--
+
+*`host.os.family`*::
++
+--
+type: keyword
+
+OS family (e.g. redhat, debian, freebsd, windows).
+
+
+--
+
+*`host.ip`*::
++
+--
+type: ip
+
+List of IP-addresses.
+
+
+--
+
+*`host.mac`*::
++
+--
+type: keyword
+
+List of hardware-addresses, usually MAC-addresses.
+
+
+--
+
+[[exported-fields-kubernetes-processor]]
+== Kubernetes fields
+
+Kubernetes metadata added by the kubernetes processor
+
+
+
+
+*`kubernetes.pod.name`*::
++
+--
+type: keyword
+
+Kubernetes pod name
+
+
+--
+
+*`kubernetes.pod.uid`*::
++
+--
+type: keyword
+
+Kubernetes Pod UID
+
+
+--
+
+*`kubernetes.namespace`*::
++
+--
+type: keyword
+
+Kubernetes namespace
+
+
+--
+
+*`kubernetes.node.name`*::
++
+--
+type: keyword
+
+Kubernetes node name
+
+
+--
+
+*`kubernetes.labels`*::
++
+--
+type: object
+
+Kubernetes labels map
+
+
+--
+
+*`kubernetes.annotations`*::
++
+--
+type: object
+
+Kubernetes annotations map
+
+
+--
+
+*`kubernetes.container.name`*::
++
+--
+type: keyword
+
+Kubernetes container name
+
+
+--
+
+*`kubernetes.container.image`*::
++
+--
+type: keyword
+
+Kubernetes container image
+
+
+--
+
+[[exported-fields-nvidiabeat]]
+== nvidiabeat fields
+
+provides metrics about nvidia gpus using the NVML Interface
+
+
+
+[float]
+== system fields
+
+contains system wide properties.
+
+
+
+*`system.driver.version`*::
++
+--
+type: keyword
+
+driver version of currently active driver.
+
+
+--
+
+*`system.nvml.version`*::
++
+--
+type: keyword
+
+version of used nvml
+
+
+--
+
+*`system.device.count`*::
++
+--
+type: long
+
+number of nvidia devices connected to the system.
+
+
+--
+
+[float]
+== process fields
+
+running process.
+
+
+
+*`process.device.uuid`*::
++
+--
+type: keyword
+
+UUID of the device this process is associated to.
+
+
+--
+
+*`process.pid`*::
++
+--
+type: long
+
+process ID
+
+
+--
+
+*`process.type`*::
++
+--
+type: keyword
+
+context type of this process.
+
+
+--
+
+
+*`process.memory.compute.bytes`*::
++
+--
+type: long
+
+Bytes used in compute context.
+
+
+--
+
+*`process.memory.graphics.bytes`*::
++
+--
+type: long
+
+Bytes used in graphics context.
+
+
+--
+
+[float]
+== device fields
+
+contains metric about a single device.
+
+
+
+*`device.index`*::
++
+--
+type: long
+
+NVML index of this device.
+
+
+--
+
+*`device.brand`*::
++
+--
+type: keyword
+
+the nvidia Product Brand of this device.
+
+
+--
+
+*`device.name`*::
++
+--
+type: keyword
+
+name of the device.
+
+
+--
+
+*`device.uuid`*::
++
+--
+type: keyword
+
+UUID of the device.
+
+
+--
+
+
+*`device.temperature.value`*::
++
+--
+type: long
+
+GPU temperature in Celcius.
+
+
+--
+
+*`device.temperature.threshold.shutdown`*::
++
+--
+type: long
+
+Temperature threshold to shutdown the device.
+
+
+--
+
+*`device.temperature.threshold.slowdown`*::
++
+--
+type: long
+
+Temperature threshold to slowdown the device.
+
+
+--
+
+[float]
+== memory fields
+
+information about the GPU Memory.
+
+
+
+[float]
+== bar1 fields
+
+Total, Available and Used size of BAR1 memory.
+
+
+
+*`device.memory.bar1.total.bytes`*::
++
+--
+type: long
+
+--
+
+[float]
+== free fields
+
+metrics about free memory.
+
+
+
+*`device.memory.bar1.free.bytes`*::
++
+--
+type: long
+
+--
+
+*`device.memory.bar1.free.pct`*::
++
+--
+type: scaled_float
+
+format: percent
+
+--
+
+[float]
+== used fields
+
+metrics ybout used memory.
+
+
+
+*`device.memory.bar1.used.bytes`*::
++
+--
+type: long
+
+--
+
+*`device.memory.bar1.used.pct`*::
++
+--
+type: scaled_float
+
+format: percent
+
+--
+
+*`device.memory.total.bytes`*::
++
+--
+type: long
+
+total bytes available.
+
+
+--
+
+[float]
+== free fields
+
+metrics about free memory.
+
+
+
+*`device.memory.free.bytes`*::
++
+--
+type: long
+
+--
+
+*`device.memory.free.pct`*::
++
+--
+type: scaled_float
+
+format: percent
+
+--
+
+[float]
+== used fields
+
+metrics ybout used memory.
+
+
+
+*`device.memory.used.bytes`*::
++
+--
+type: long
+
+--
+
+*`device.memory.used.pct`*::
++
+--
+type: scaled_float
+
+format: percent
+
+--
+
+
+*`device.utilization.gpu.pct`*::
++
+--
+type: scaled_float
+
+format: percent
+
+--
+
+*`device.utilization.memory.pct`*::
++
+--
+type: scaled_float
+
+format: percent
+
+--
+
+*`device.utilization.encoder.pct`*::
++
+--
+type: scaled_float
+
+format: percent
+
+--
+
+*`device.utilization.decoder.pct`*::
++
+--
+type: scaled_float
+
+format: percent
+
+--
+
+*`device.board.id`*::
++
+--
+type: long
+
+BoardID of the Device as of NVML documentation.
+
+
+--
+
+*`device.computemode`*::
++
+--
+type: keyword
+
+contains the current compute mode of the device.
+
+
+--
+
+[float]
+== display fields
+
+contains the current settings for displays.
+
+
+
+*`device.display.mode`*::
++
+--
+type: keyword
+
+This field indicates whether a physical display (e.g. monitor) is currently connected to any of the device's connectors.
+
+
+--
+
+*`device.display.active`*::
++
+--
+type: keyword
+
+This field indicates whether a display is initialized on the device. For example whether X Server is attached to this device and has allocated memory for the screen.
+
+
+--
+
+*`device.fanspeed.pct`*::
++
+--
+type: scaled_float
+
+format: percent
+
+speed of fan in percent.
+
+
+--
+
+*`device.vbios.versions`*::
++
+--
+type: keyword
+
+VBIOS version of the device.
+
+
+--
+
+*`device.serial`*::
++
+--
+type: keyword
+
+globally unique board serial number associated with this device's board.
+
+
+--
+
+[float]
+== PCIe fields
+
+metrics about the PCIe Interface of the Device
+
+
+
+[float]
+== utilization fields
+
+metrics about current PCIe utilization
+
+
+
+*`device.PCIe.utilization.tx.kb`*::
++
+--
+type: long
+
+--
+
+*`device.PCIe.utilization.rx.kb`*::
++
+--
+type: long
+
+--
+
+[float]
+== link fields
+
+metrics about PCIe link of the device
+
+
+
+[float]
+== width fields
+
+metrics about PCIe link width
+
+
+
+*`device.PCIe.link.width.value`*::
++
+--
+type: long
+
+currently used PCIe link width
+
+
+--
+
+*`device.PCIe.link.width.max`*::
++
+--
+type: long
+
+maximum available PCIe link width
+
+
+--
+
+[float]
+== generation fields
+
+metrics about PCIe link generation
+
+
+
+*`device.PCIe.link.generation.value`*::
++
+--
+type: long
+
+currently used PCIe link generation
+
+
+--
+
+*`device.PCIe.link.generation.max`*::
++
+--
+type: long
+
+maximum available PCIe link generation
+
+
+--
+
+
+*`device.power.state`*::
++
+--
+type: keyword
+
+current Power State of the device
+
+
+--
+
+*`device.power.usage.mW`*::
++
+--
+type: long
+
+current power draw in milliwatts
+
+
+--
+
+
+*`device.power.limit.management.mW`*::
++
+--
+type: long
+
+defined power draw limit for the device
+
+
+--
+
+*`device.power.limit.enforced.mW`*::
++
+--
+type: long
+
+calculated power draw limit for the device
+
+
+--
+

@@ -1,0 +1,261 @@
+- key: nvidiabeat
+  title: nvidiabeat
+  description: >
+    provides metrics about nvidia gpus using the NVML Interface
+  fields:
+    - name: system
+      type: group
+      required: false
+      description: >
+        contains system wide properties.
+      fields:
+        - name: driver.version
+          type: keyword
+          description: >
+            driver version of currently active driver.
+        - name: nvml.version
+          type: keyword
+          description: >
+            version of used nvml
+        - name: device.count
+          type: long
+          description: >
+            number of nvidia devices connected to the system.
+    - name: process
+      type: group
+      description: >
+        running process.
+      fields:
+        - name: device.uuid
+          type: keyword
+          description: >
+            UUID of the device this process is associated to.
+        - name: pid
+          type: long
+          description: >
+            process ID
+        - name: type
+          type: keyword
+          description: >
+            context type of this process.
+        - name: memory
+          type: group
+          fields:
+            - name: compute.bytes
+              type: long
+              description: >
+                Bytes used in compute context.
+            - name: graphics.bytes
+              type: long
+              description: >
+                Bytes used in graphics context.
+    - name: device
+      type: group
+      required: false
+      description: >
+        contains metric about a single device.
+      fields:
+        - name: index
+          type: long
+          description: >
+            NVML index of this device.
+        - name: brand
+          type: keyword
+          description: >
+            the nvidia Product Brand of this device.
+        - name: name
+          type: keyword
+          description: >
+            name of the device.
+        - name: uuid
+          type: keyword
+          description: >
+            UUID of the device.
+        - name: temperature
+          type: group
+          fields:
+            - name: value
+              type: long
+              description: >
+                GPU temperature in Celcius.
+            - name: threshold.shutdown
+              type: long
+              description: >
+                Temperature threshold to shutdown the device.
+            - name: threshold.slowdown
+              type: long
+              description: >
+                Temperature threshold to slowdown the device.
+
+        - name: memory
+          type: group
+          description: >
+            information about the GPU Memory.
+          fields:
+            - name: bar1
+              type: group
+              description: >
+                Total, Available and Used size of BAR1 memory.
+              fields:
+                - name: total.bytes
+                  type: long
+                - name: free
+                  type: group
+                  description: >
+                    metrics about free memory.
+                  fields:
+                    - name: bytes
+                      type: long
+                    - name: pct
+                      type: scaled_float
+                      format: percent
+                - name: used
+                  type: group
+                  description: >
+                    metrics ybout used memory.
+                  fields:
+                    - name: bytes
+                      type: long
+                    - name: pct
+                      type: scaled_float
+                      format: percent
+            - name: total.bytes
+              type: long
+              description: >
+                total bytes available.
+            - name: free
+              type: group
+              description: >
+                metrics about free memory.
+              fields:
+                - name: bytes
+                  type: long
+                - name: pct
+                  type: scaled_float
+                  format: percent
+            - name: used
+              type: group
+              description: >
+                metrics ybout used memory.
+              fields:
+                - name: bytes
+                  type: long
+                - name: pct
+                  type: scaled_float
+                  format: percent
+        - name: utilization
+          type: group
+          fields:
+            - name: gpu.pct
+              type: scaled_float
+              format: percent
+            - name: memory.pct
+              type: scaled_float
+              format: percent
+            - name: encoder.pct
+              type: scaled_float
+              format: percent
+            - name: decoder.pct
+              type: scaled_float
+              format: percent
+        - name: board.id
+          type: long
+          description: >
+            BoardID of the Device as of NVML documentation.
+        - name: computemode
+          type: keyword
+          description: >
+            contains the current compute mode of the device.
+        - name: display
+          type: group
+          description: >
+            contains the current settings for displays.
+          fields:
+            - name: mode
+              type: keyword
+              description: >
+                This field indicates whether a physical display (e.g. monitor) is currently connected to any of the device's connectors.
+            - name: active
+              type: keyword
+              description: >
+               This field indicates whether a display is initialized on the device. For example whether X Server is attached to this device and has allocated memory for the screen.
+        - name: fanspeed.pct
+          type: scaled_float
+          format: percent
+          description: >
+            speed of fan in percent.
+        - name: vbios.versions
+          type: keyword
+          description: >
+            VBIOS version of the device.
+        - name: serial
+          type: keyword
+          description: >
+            globally unique board serial number associated with this device's board.
+        - name: PCIe
+          type: group
+          description: >
+            metrics about the PCIe Interface of the Device
+          fields:
+            - name: utilization
+              type: group
+              description: >
+                metrics about current PCIe utilization
+              fields:
+                - name: tx.kb
+                  type: long
+                - name: rx.kb
+                  type: long
+            - name: link
+              type: group
+              description: >
+                metrics about PCIe link of the device
+              fields:
+                - name: width
+                  type: group
+                  description: >
+                    metrics about PCIe link width
+                  fields:
+                    - name: value
+                      type: long
+                      description: >
+                        currently used PCIe link width
+                    - name: max
+                      type: long
+                      description: >
+                        maximum available PCIe link width
+                - name: generation
+                  type: group
+                  description: >
+                    metrics about PCIe link generation
+                  fields:
+                    - name: value
+                      type: long
+                      description: >
+                        currently used PCIe link generation
+                    - name: max
+                      type: long
+                      description: >
+                        maximum available PCIe link generation
+        - name: power
+          type: group
+          fields:
+            - name: state
+              type: keyword
+              description: >
+                current Power State of the device
+            - name: usage.mW
+              type: long
+              description: >
+                current power draw in milliwatts
+            - name: limit
+              type: group
+              fields:
+                - name: management.mW
+                  type: long
+                  description: >
+                    defined power draw limit for the device
+                - name: enforced.mW
+                  type: long
+                  description: >
+                    calculated power draw limit for the device

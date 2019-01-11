@@ -1,0 +1,15 @@
+#JetBrains
+/.idea
+
+#Builds
+/build
+/nvidiabeat
+/nvidiabeat.test
+/nvidiabeat.yml
+
+#Generated
+/_meta/kibana.generated
+
+#misc
+.DS_Store
+*.pyc

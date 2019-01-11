@@ -1,0 +1,8 @@
+################### Nvidiabeat Configuration Example #########################
+
+############################# Nvidiabeat ######################################
+
+nvidiabeat:
+  # Defines how often an event is sent to the output
+  period: 1s
+  systemperiod: 1m
