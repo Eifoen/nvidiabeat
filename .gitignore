@@ -8,8 +8,11 @@
 /nvidiabeat.yml
 
 #Generated
-/_meta/kibana.generated
+/_meta/kibana.generated/**
+fields.yml
 
 #misc
 .DS_Store
 *.pyc
+/logs/**
+/vendor/vendor.json.save

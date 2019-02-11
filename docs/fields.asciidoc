@@ -845,7 +845,7 @@ globally unique board serial number associated with this device's board.
 --
 
 [float]
-== PCIe fields
+== pcie fields
 
 metrics about the PCIe Interface of the Device
 
@@ -858,14 +858,14 @@ metrics about current PCIe utilization
 
 
 
-*`device.PCIe.utilization.tx.kb`*::
+*`device.pcie.utilization.tx.kb`*::
 +
 --
 type: long
 
 --
 
-*`device.PCIe.utilization.rx.kb`*::
+*`device.pcie.utilization.rx.kb`*::
 +
 --
 type: long
@@ -886,7 +886,7 @@ metrics about PCIe link width
 
 
 
-*`device.PCIe.link.width.value`*::
+*`device.pcie.link.width.value`*::
 +
 --
 type: long
@@ -896,7 +896,7 @@ currently used PCIe link width
 
 --
 
-*`device.PCIe.link.width.max`*::
+*`device.pcie.link.width.max`*::
 +
 --
 type: long
@@ -913,7 +913,7 @@ metrics about PCIe link generation
 
 
 
-*`device.PCIe.link.generation.value`*::
+*`device.pcie.link.generation.value`*::
 +
 --
 type: long
@@ -923,7 +923,7 @@ currently used PCIe link generation
 
 --
 
-*`device.PCIe.link.generation.max`*::
+*`device.pcie.link.generation.max`*::
 +
 --
 type: long

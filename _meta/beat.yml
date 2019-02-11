@@ -6,3 +6,7 @@ nvidiabeat:
   # Defines how often an event is sent to the output
   period: 1s
   systemperiod: 1m
+  metricsets:
+    - device
+    - system
+    #- process

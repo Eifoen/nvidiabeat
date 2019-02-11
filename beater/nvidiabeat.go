@@ -2,6 +2,7 @@ package beater
 
 import (
 	"fmt"
+	"strings"
 	"time"
 
 	"github.com/elastic/beats/libbeat/beat"
@@ -10,6 +11,12 @@ import (
 
 	"github.com/Eifoen/gonvml"
 	"github.com/Eifoen/nvidiabeat/config"
+)
+
+const (
+	metricsetProcess = "process"
+	metricsetDevice  = "device"
+	metricsetSystem  = "system"
 )
 
 // Nvidiabeat configuration.
@@ -33,11 +40,10 @@ func New(b *beat.Beat, cfg *common.Config) (beat.Beater, error) {
 	return bt, nil
 }
 
-func RunSystem(b *beat.Beat, period time.Duration, channel chan beat.Event, done chan struct {}) error {
+func RunSystem(b *beat.Beat, period time.Duration, channel chan beat.Event, done chan struct{}) error {
 	ticker := time.NewTicker(period)
 
 	for {
-		logp.Info("System: starting over")
 		select {
 		case <-done:
 			logp.Info("System: quitting thread")
@@ -57,7 +63,7 @@ func RunSystem(b *beat.Beat, period time.Duration, channel chan beat.Event, done
 	}
 }
 
-func RunDevice(b *beat.Beat, period time.Duration, channel chan beat.Event, done chan struct {}) error {
+func RunDevice(b *beat.Beat, period time.Duration, channel chan beat.Event, done chan struct{}) error {
 	ticker := time.NewTicker(period)
 
 	for {
@@ -111,6 +117,16 @@ func RunProcess(b *beat.Beat, period time.Duration, channel chan beat.Event, don
 	}
 }
 
+func contains(str string, slice []string) bool {
+	for _, e := range slice {
+		diff := strings.Compare(str, e)
+		if diff == 0 {
+			return true
+		}
+	}
+	return false
+}
+
 // Run starts nvidiabeat.
 func (bt *Nvidiabeat) Run(b *beat.Beat) error {
 	logp.Info("nvidiabeat is running! Hit CTRL-C to stop it.")
@@ -133,13 +149,13 @@ func (bt *Nvidiabeat) Run(b *beat.Beat) error {
 	// start workers
 	events := make(chan beat.Event, 50)
 	quitChannel := make(chan struct{})
-	if(bt.config.SystemSet){
+	if contains(metricsetSystem, bt.config.MetricSets) {
 		go RunSystem(b, bt.config.PeriodSystem, events, quitChannel)
 	}
-	if(bt.config.DeviceSet){
+	if contains(metricsetDevice, bt.config.MetricSets) {
 		go RunDevice(b, bt.config.Period, events, quitChannel)
 	}
-	if(bt.config.ProcessSet){
+	if contains(metricsetProcess, bt.config.MetricSets) {
 		go RunProcess(b, bt.config.Period, events, quitChannel)
 	}
 

@@ -192,7 +192,7 @@
           type: keyword
           description: >
             globally unique board serial number associated with this device's board.
-        - name: PCIe
+        - name: pcie
           type: group
           description: >
             metrics about the PCIe Interface of the Device
